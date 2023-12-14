@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            width: 300px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            background-color:rgb(0,77,64);
+            color:white;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }  button:hover {
+            background-color: #45a049;
+        }
+
+        .switch-form {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .buttons{
+            width: 100%;
+            text-align: end;
+margin-right: 20px;
+        }
+        .cc{
+            height: 55px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cc" >
+        <a href="signup.html"><button class="buttons">SignUp</button></a>
+    </div>
+    <div class="container">
+        <div class="form-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="loginUsername">Username:</label>
+                <input type="text" id="loginUsername" name="loginUsername" required>
+                <span class="username"></span>
+
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" name="loginPassword" required>
+                <span class="password"></span>
+
+                <button type="button" onclick="login()">Login</button>
+            </form>
+
+            <p class="switch-form">Don't have an account? <a href="./signup.html" onclick="toggleForm('signup')">Sign up</a></p>
+        </div>
+    </div>
+
+    <script>
+        function login(){
+        let emailVal=document.getElementById("loginUsername").value;
+        let password=document.getElementById("loginPassword").value;
+        if(emailVal && password){
+       if(localStorage.getItem(emailVal)){
+       if(localStorage.getItem(emailVal)==password)
+        {localStorage.setItem("admin@123",emailVal);window.location.href = 'BrewryPage.html';}
+   else alert("Wrong Password")
+       }
+       else{
+        alert("Please SignUp Before Login")
+       }
+    }
+    else{
+        alert("Empty fields")
+    }}
+    
+    </script>
+</body>
+</html>

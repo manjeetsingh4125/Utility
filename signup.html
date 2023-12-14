@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .signup-container {
+            width: 400px;
+            margin: 100px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        button {
+            width: calc(100% - 20px);
+            background-color:rgb(0,77,64);
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            color: #333;
+        }
+        .check{
+           color: red; 
+           font-size: small;
+           text-align: left;
+           margin-left: 5px;
+        }
+        .buttons{
+            width: 100%;
+            text-align: end;
+margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div >
+        <a href="login.html"><button class="buttons">Login</button></a>
+    </div>
+    <div class="signup-container">
+        <h2>Signup</h2>
+        <form id="signupForm">
+            <label for="name">Email:</label>
+            <input type="text" id="emails" name="email" required >
+<div class="check" id="checkname"></div>
+         <label for="email">Password:</label>
+         <input type="password" id="name" name="name" required >
+            <div id="checkemail" class="check"></div>
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <button type="button" onclick="signup()" id="btn">SignUp</button>
+        </form>
+    </div>
+
+    <script>
+        function signup() {
+    
+            var name = document.getElementById('name')
+            var emails = document.getElementById('emails')
+            var dob = document.getElementById('dob')
+            var checkname=document.getElementById("checkname");
+            var checkemail=document.getElementById("checkemail");
+    
+          let nameVal=  name.value;
+          let i=emails.value;
+          let datev=dob.value;
+          let ur='';
+          let a=true;
+          let b=true;
+          if(nameVal && i && datev){
+if(nameVal.length<8){a=false}
+if(!(i.includes("@"))){b=false;}
+if(a&&b){
+if(localStorage.getItem(i)){alert("Email already Existing");}
+else{
+    localStorage.setItem(i,nameVal);
+ur='login.html';
+}
+}
+else{alert("Invalid:\npassword min length should be 8 \nemail should contain @")};
+window.location.href = ur;
+
+        }
+    else {
+        alert("empty fields")
+    }}
+    </script>
+</body>
+</html>
